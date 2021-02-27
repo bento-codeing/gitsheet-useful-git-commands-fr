@@ -1,6 +1,6 @@
 # Aide aux commandes Git
 
-Voici une feuilles récapitulatives des différentes commandes Git les plus utiles et les plus utilisées.
+Voici une feuille récapitulative des différentes commandes Git régulièrement utilisées.
 
 |Description|Méthode|Exemple|
 |-|-|-|

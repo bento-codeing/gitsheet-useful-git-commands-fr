@@ -34,7 +34,39 @@ Voici une feuille récapitulative des différentes commandes Git régulièrement
 &nbsp;
 
 ## Supplément(s)
-### Annexe 1
+### Annexe 1 - Réinitialisation 
+#### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; A. La commande `reset`
 La commande `git reset` permet d'annuler des changements et peut être appelée de trois façons différentes, qui correspondent aux arguments de la ligne de commande **--soft**, **--mixed** et **--hard**.
 
-![Type de réinitialisation](https://user.oc-static.com/upload/2019/07/02/15620712098159_09.jpg)
+![Types de réinitialisation](https://user.oc-static.com/upload/2019/07/02/15620712098159_09.jpg)
+#### L'argument --hard
+Permet de **revenir à n'importe quel commit** en oubliant **tout** ce qui a pu être modifié après.
+
+Cette utilisation de `git reset` va constituer une manière simple d'annuler des changements qui n'ont pas encore été partagés.
+
+&nbsp;
+
+#### L'argument --mixed
+Permet de revenir juste **après le dernier commit** **ou** le **commit spécifié** **sans annuler** les **modifications** en cours. Il va cependant créer un HEAD détaché (un HEAD est un pointeur vers la position actuelle sur laquelle on se trouve dans notre répertoire de travail. Par défaut, HEAD pointe sur la branche courante et peut être déplacé vers une autre branche ou un autre commit).
+
+L'avantage est de pouvoir désindexé des fichiers non commités.
+
+À noter que si rien n'est spécifié après la commande `git reset`, par défaut un `git reset --mixed HEAD~` sera exécuté.
+
+&nbsp;
+
+#### L'argument --soft
+
+Le `git reset --soft` permet uniquement de se **placer** sur un **commit spécifique** afin de **voir le code** à un instant donné **ou créer une branche** partant d'un ancien commit. 
+
+À contrario des deux arguments précédents, il ne supprime aucun fichier, aucun commit, et ne crée pas de HEAD détaché.
+
+&nbsp;
+
+#### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; A. La commande `revert`
+La commande `revert` permet de faire un *undo* (*i.e. un retour en arrière*) tout en préservant l'intégrité de l'historique. Et va en quelque sorte réaliser un *undo* en inversant l'action réaliser dans un nouveau *commit*.
+
+La différence entre la commande `reset` et `revert` expliquée schématiquement : 
+
+![Différence entre reset et revert](https://user.oc-static.com/upload/2019/07/02/15620714617275_10.jpg)
+

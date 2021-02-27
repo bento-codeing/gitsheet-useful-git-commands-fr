@@ -16,5 +16,14 @@ Voici une feuille récapitulative des différentes commandes Git régulièrement
 |Stager des modifications avant de les ajouter au *repository*|`git add [les fichiers que je souhaite stager/indexer]`|git add src/config/config.yaml|
 |Archiver des modifications|`git commit`||
 |Archiver des modifications avec un message|`git commit -m <string>`|git commit -m "Mon super message"|
+|Supprimer le dernier commit d'une branche en local|`git reset --hard HEAD^`||
+|Remiser un commit supprimé d'une branche en local sur une autre branche|`git reset --hard [les 8 premiers caractères du hash]`|git reset --hard ca83a6df|
+|Modifier le message du dernier commit (fonctionne quand il y a aucune modification)|`git commit --amend -m <string>` *(l'argument --amend permet de modifier le dernier commit)*|git commit --amend -m "Mon nouveau super message"|
+|Ajouter un fichier au dernier commit|Deux étapes : `git add monFichierOublie.txt`*(1)* et `git commit --amend --no-edit`*(2, --no-edit pour ne pas modifier le message)* ||
+|Observer les derniers commits|`git log`||
 |Afficher toutes les actions et leurs *SHA* dans l'historique *Git*| `git reflog`||
 |Afficher l'état de nos fichiers, i.e. où se situe nos fichiers dans les 3 zones loacales majeures (Working Directory, Stage ou Repository)|`git status`||
+|Créer une remise des modifications|`git stash`||
+|Appliquer une remise|`git apply`||
+|Appliquer une remise spécifique non-nommée|`git stash apply stash@{n}`|git stash apply stash@{0}|
+|Lister les remises|`git stash list`||

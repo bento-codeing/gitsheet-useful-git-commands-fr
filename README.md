@@ -1,4 +1,4 @@
-# Aides aux commandes Git
+# Aide aux commandes Git
 
 Voici une feuilles récapitulatives des différentes commandes Git les plus utiles et les plus utilisées.
 

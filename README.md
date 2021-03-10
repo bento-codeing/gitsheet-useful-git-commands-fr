@@ -37,7 +37,10 @@ Voici une feuille récapitulative des différentes commandes Git régulièrement
 |**Récupérer** des **modifications** sur un **dépot distant**|`git fetch`||
 |**Récupérer** des **modifications** sur un **dépot distant** et appliquer les modifications localement (*fetch* + *merge*)|`git pull [optionnellement le nom de la remote (i.e. le nom du repository que l'on a défini)]`||
 |**Envoyer des modifications sur un dépot distant**|`git pull [optionnellement le nom de la remote (i.e. le nom du repository que l'on a défini)]`||
-
+|**Fusionner les commits** (avantages : historiques distants plus propre et conservation de tous les messags de commits)|1. Passer en mode intératif *rebase* avec la commande `git rebase -i` &nbsp; 2. Appliquer la commande `squash` sur les commits que l'on souhaite fusionner. &nbsp; 3. Valider |https://thoughtbot.com/blog/git-interactive-rebase-squash-amend-rewriting-history|
+|**Trouver un bug sur un commit spécifique**|1. Lancer la recherche avec la commande `git bisect start [SHA du mauvais commit] [SHA du bon commit]` &nbsp; 2. À chaque itération de commit, il faudra indiquer à *Git* si le commit est bon ou non avec la commande `git bisect [good ou bad]`||
+|**Ajouter un sous-module**|`git submodile add [lien HTTPS ou SSH] [dossier de destination]`||
+|**Créer un nouvel arbre de commits** (i.e. inclure l'historique d'un *repository*)|Cf. `git subtree`|https://delicious-insights.com/fr/articles/git-subtrees/|
 &nbsp;
 
 ## Supplément(s)
@@ -76,7 +79,9 @@ La commande `revert` permet de faire un *undo* (*i.e. un retour en arrière*) to
 La différence entre la commande `reset` et `revert` expliquée schématiquement : 
 
 ![Différence entre reset et revert](https://user.oc-static.com/upload/2019/07/02/15620714617275_10.jpg)
-
+&nbsp;
+&nbsp;
+&nbsp;
 ### Annexe 2 - Structure
  #### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; A. L'arbre *Git*
  Il existe trois types d'objets :
@@ -95,8 +100,34 @@ Schématiquement, cela nous donne :
 
 ![Tree, Blob et Commit](https://user.oc-static.com/upload/2019/07/02/15620718272742_11.jpg)
 &nbsp;
+&nbsp;
  #### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; B. Récapitulatif des commandes *Git*
  ![Récapitulatif des commandes Git](https://user.oc-static.com/upload/2019/07/02/1562072253722_14.jpg)
  &nbsp;
+ &nbsp;
  #### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; C. Réécrire l'historique des commits lors d'une fusion
- Pour cela, la commande *git rebase* est utilisée et a le même objectif que la commande de fusion `git merge`.
+ Pour cela, la commande *git rebase* est utilisée. Elle a le même objectif que la commande de fusion `git merge` à la différence qu'elle donne l'illusion de créer une branche à partir d'un commit différent.
+ 
+ L'avantage est de garder un historique plus clair, moins superflu et donc plus compréhensible.
+ L'inconvénient est qu'il ne faut jamais rebaser des commits pushés sur un dépot public au risque de voir remplacer les anciens commtis de ce dépot public.
+ 
+La commande `git rebase` en mode intéractif permet également de réécrire les messages des commits.
+
+Pour résumer, cette commande est fortement pratique lorsqu'il s'agit de modifier nos branches, mais aussi pour les nettoyer.
+
+ &nbsp;
+ &nbsp;
+ #### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; D. Les sous-modules
+ Les sous-modules permettent d'inclure un dépôt *Git* au sein d'un autre dépot *Git* grâce à la commande `git submodule add [lien HTTPS ou SSH] [dossier de destination]`. 
+
+Cette commande permet de pointer le dernier *commit* du *repository* sur lequel on souhaite récupérer de la donnée.
+
+Utile lorsque l'on a besoin d'une répertoire avec une version fixe, mais aussi lorsque l'on souhaite découper un gros projet en plus petite partie.
+
+L'inconvénient est que si il y a besoin d'un changement dans le sous-module, il faut faire un commit/push dans le sous-module, puis référencer le nouveau commit dans le dépôt principal et enfin commiter/pousser la référence modifiée du dépôt principal.  
+
+ &nbsp;
+ &nbsp;
+ #### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; E. Les sous-arborescences
+ Créer un arbre de commits pour un sous-dossier spécifique va permettre d'inclure un répertoire au sein du sien en conservant son historique ainsi que les éventuelles futures mises à jour.
+

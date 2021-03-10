@@ -100,34 +100,3 @@ Schématiquement, cela nous donne :
  &nbsp;
  #### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; C. Réécrire l'historique des commits lors d'une fusion
  Pour cela, la commande *git rebase* est utilisée et a le même objectif que la commande de fusion `git merge`.
-
-Permet de **revenir à n'importe quel commit** en oubliant **tout** ce qui a pu être modifié après.
-
-Cette utilisation de `git reset` va constituer une manière simple d'annuler des changements qui n'ont pas encore été partagés.
-
-&nbsp;
-
-#### L'argument --mixed
-Permet de revenir juste **après le dernier commit** **ou** le **commit spécifié** **sans annuler** les **modifications** en cours. Il va cependant créer un HEAD détaché (un HEAD est un pointeur vers la position actuelle sur laquelle on se trouve dans notre répertoire de travail. Par défaut, HEAD pointe sur la branche courante et peut être déplacé vers une autre branche ou un autre commit).
-
-L'avantage est de pouvoir désindexé des fichiers non commités.
-
-À noter que si rien n'est spécifié après la commande `git reset`, par défaut un `git reset --mixed HEAD~` sera exécuté.
-
-&nbsp;
-
-#### L'argument --soft
-
-Le `git reset --soft` permet uniquement de se **placer** sur un **commit spécifique** afin de **voir le code** à un instant donné **ou créer une branche** partant d'un ancien commit. 
-
-À contrario des deux arguments précédents, il ne supprime aucun fichier, aucun commit, et ne crée pas de HEAD détaché.
-
-&nbsp;
-
-#### &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; A. La commande `revert`
-La commande `revert` permet de faire un *undo* (*i.e. un retour en arrière*) tout en préservant l'intégrité de l'historique. Et va en quelque sorte réaliser un *undo* en inversant l'action réaliser dans un nouveau *commit*.
-
-La différence entre la commande `reset` et `revert` expliquée schématiquement : 
-
-![Différence entre reset et revert](https://user.oc-static.com/upload/2019/07/02/15620714617275_10.jpg)
-

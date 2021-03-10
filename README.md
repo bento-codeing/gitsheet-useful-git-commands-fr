@@ -41,6 +41,7 @@ Voici une feuille récapitulative des différentes commandes Git régulièrement
 |**Trouver un bug sur un commit spécifique**|1. Lancer la recherche avec la commande `git bisect start [SHA du mauvais commit] [SHA du bon commit]` &nbsp; 2. À chaque itération de commit, il faudra indiquer à *Git* si le commit est bon ou non avec la commande `git bisect [good ou bad]`||
 |**Ajouter un sous-module**|`git submodile add [lien HTTPS ou SSH] [dossier de destination]`||
 |**Créer un nouvel arbre de commits** (i.e. inclure l'historique d'un *repository*)|Cf. `git subtree`|https://delicious-insights.com/fr/articles/git-subtrees/|
+
 &nbsp;
 
 ## Supplément(s)
